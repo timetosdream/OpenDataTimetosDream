@@ -6,7 +6,7 @@ resources:
   - name: Pagamenti
     url: 'http://opencoesione.gov.it/progetti/pagamenti_1si12692.csv'
     format: csv
-- name: Metadati del dataset Pagamenti
+  - name: Metadati del dataset Pagamenti
     url: 'datasets/metadati_pagamenti.md'
     format: html
 category:
