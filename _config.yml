@@ -47,7 +47,7 @@ fork_me_url: https://github.com/iltempe/opendatagentediprato
 navigation:
   - title: Dati
     url: /datasets/
-  - title: Cosa è?
+  - title: Cos'è?
     url: /cosa/
   - title: Come aggiungo dati?
     url: /come/
