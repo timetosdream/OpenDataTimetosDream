@@ -9,6 +9,10 @@ resources:
 category:
   - Trasporti
 metadata:
+  - nome_variabile: COD_LOCALE_PROGETTO | DATA_AGGIORNAMENTO | TOT_PAGAMENTI | OC_TOT_PAGAMENTI_RENDICONTAB_UE | OC_TOT_PAGAMENTI_FSC | OC_TOT_PAGAMENTI_PAC
+  | descrizione:
+  | tipo_variabile:
+  | nota_esplicativa:
 maintainer: Timeto's Dream
 maintainer_email: timetosdream@gmail.com
 ---
