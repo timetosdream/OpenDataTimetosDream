@@ -9,10 +9,9 @@ resources:
 category:
   - Trasporti
 metadata:
-  - nome_variabile: COD_LOCALE_PROGETTO | DATA_AGGIORNAMENTO | TOT_PAGAMENTI | OC_TOT_PAGAMENTI_RENDICONTAB_UE | OC_TOT_PAGAMENTI_FSC | OC_TOT_PAGAMENTI_PAC
-  | descrizione:
-  | tipo_variabile:
-  | nota_esplicativa:
+|          nome_variabile         |                                            descrizione                                           | tipo_variabile |                                                                                                                                              nota_esplicativa                                                                                                                                             |
+|---------------------------------|--------------------------------------------------------------------------------------------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| COD_LOCALE_PROGETTO             | Codice chiave progetto                                                                           | char           | Codice identificativo univoco del progetto nel sistema di monitoraggio 2007-2013 che funge da chiave di collegamento con gli altri dataset relativi ai progetti finanziati dalla politica di coesione.                                                                                                    |
 maintainer: Timeto's Dream
 maintainer_email: timetosdream@gmail.com
 ---
