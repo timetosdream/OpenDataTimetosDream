@@ -14,7 +14,6 @@ resources:
     format: html
 category:
   - Trasporti
-metadata:
 maintainer: Timeto's Dream
 maintainer_email: timetosdream@gmail.com
 ---
