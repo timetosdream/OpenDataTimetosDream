@@ -6,6 +6,9 @@ resources:
   - name: Pagamenti
     url: 'http://opencoesione.gov.it/progetti/pagamenti_1si12692.csv'
     format: csv
+  - name: Pagamenti
+    url: 'http://timetosdream.github.io/opendatatimetosdream/datasets/pagamenti.html'
+    format: html
   - name: Metadati del dataset Pagamenti
     url: 'http://bit.ly/23cVktD'
     format: csv
