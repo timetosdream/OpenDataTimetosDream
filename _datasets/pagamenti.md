@@ -7,7 +7,7 @@ resources:
     url: 'http://opencoesione.gov.it/progetti/pagamenti_1si12692.csv'
     format: csv
 - name: Metadati del dataset Pagamenti
-    url: 'http://timetosdream.github.io/opendatatimetosdream/datasets/metadati_pagamenti.md'
+    url: 'datasets/metadati_pagamenti.md'
     format: html
 category:
   - Trasporti
