@@ -9,8 +9,6 @@ import NavView from './views/nav'
 import DatasetsView from './views/datasets'
 import DatasetView from './views/dataset'
 import AddDatasetView from './views/add-dataset'
-import OrganizationView from './views/organization'
-import OrganizationsView from './views/organizations'
 import AdminView from './views/admin'
 import SetupView from './views/setup'
 import {queryByHook, setParams} from './util'
@@ -24,9 +22,7 @@ const elements = {
 
 const user = new UserModel({
   clientId: params.clientId || settings.GITHUB_CLIENT_ID,
-  proxyHost: params.proxyHost || settings.GATEKEEPER_HOST,
-  repoOwner: settings.REPO_OWNER,
-  repoName: settings.REPO_NAME
+  proxyHost: params.proxyHost || settings.GATEKEEPER_HOST
 })
 
 // If user is mid-login, finish the login process
@@ -48,10 +44,10 @@ const router = {
         repoBranch: settings.BRANCH,
         filePath: settings.FILE_PATH
       })
-      DatasetView({el: elements.main, user, file})
+      DatasetView({el: elements.main, file})
     },
     '/datasets/': function () {
-      DatasetsView({el: elements.main, user})
+      DatasetsView({el: elements.main})
     },
     '/add-dataset/': function () {
       const file = new FileModel({
@@ -62,29 +58,6 @@ const router = {
         defaultDir: settings.DATASETS_DIR
       })
       AddDatasetView({el: elements.main, file})
-    },
-    '/organizations/(.+)/': function () {
-      const file = new FileModel({
-        user,
-        repoOwner: settings.REPO_OWNER,
-        repoName: settings.REPO_NAME,
-        repoBranch: settings.BRANCH,
-        filePath: settings.FILE_PATH
-      })
-      OrganizationView({el: elements.main, user, file})
-    },
-    '/organizations/': function () {
-      OrganizationsView({el: elements.main, user})
-    },
-    '/add-organization/': function () {
-      const file = new FileModel({
-        user,
-        repoOwner: settings.REPO_OWNER,
-        repoName: settings.REPO_NAME,
-        repoBranch: settings.BRANCH,
-        defaultDir: settings.ORGANIZATIONS_DIR
-      })
-      OrganizationView({el: elements.main, user, file})
     },
     '/admin/': function () {
       const file = new FileModel({

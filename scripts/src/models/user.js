@@ -9,18 +9,17 @@ const githubLoginUrl = 'https://github.com/login/oauth/authorize'
 export default State.extend({
   props: {
     oauthToken: 'string',
-    username: 'string',
-    isCollaborator: 'boolean'
+    username: 'string'
   },
   session: {
-    repoOwner: 'string',
-    repoName: 'string',
     clientId: 'string',
     proxyHost: 'string'
   },
   initialize: function () {
     // If login cookies saved, set the user model to them
-    this.set(Cookies.getJSON('jkan'))
+    this.oauthToken = Cookies.get('oauth-token')
+    const userData = Cookies.getJSON('user-data')
+    if (userData) this.username = userData.login
   },
   initiateLogin: function () {
     const returnParams = {clientId: this.clientId, proxyHost: this.proxyHost}
@@ -32,23 +31,15 @@ export default State.extend({
     window.location.href = githubLoginUrl + '?' + $.param(redirectParams)
   },
   finishLogin: function (authCode) {
-    return this._verify(authCode)
+    this._verify(authCode)
     .then((oauthToken) => {
       this.set('oauthToken', oauthToken)
-      Cookies.set('jkan', this.serialize())
+      Cookies.set('oauth-token', oauthToken)
 
       this._getUser(oauthToken)
       .then((userData) => {
         this.set('username', userData.login)
-        Cookies.set('jkan', this.serialize())
-        this._isCollaborator(userData.login)
-        .then(() => {
-          this.set('isCollaborator', true)
-          Cookies.set('jkan', this.serialize())
-        }).catch(() => {
-          this.set('isCollaborator', false)
-          Cookies.set('jkan', this.serialize())
-        })
+        Cookies.set('user-data', userData)
       }).catch(() => console.error('Error fetching user info'))
     }).catch(() => console.error('Error verifying auth code'))
   },
@@ -67,7 +58,8 @@ export default State.extend({
     })
   },
   logout: function () {
-    Cookies.remove('jkan')
+    Cookies.remove('oauth-token')
+    Cookies.remove('user-data')
   },
   _getUser: function () {
     return new Promise((resolve, reject) => {
@@ -79,19 +71,6 @@ export default State.extend({
       user.show(null, (err, userData) => {
         if (err) reject(err)
         else resolve(userData)
-      })
-    })
-  },
-  _isCollaborator: function (username) {
-    return new Promise((resolve, reject) => {
-      const github = new Github({
-        token: this.oauthToken,
-        auth: 'oauth'
-      })
-      const repo = github.getRepo(this.repoOwner, this.repoName)
-      repo.isCollaborator(username, (err) => {
-        if (err) reject(err)
-        else resolve()
       })
     })
   }

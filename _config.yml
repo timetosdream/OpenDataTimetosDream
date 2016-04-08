@@ -1,0 +1,91 @@
+title: Open Data Timeto's Dream
+description: Portale Open Data di Timeto's Dream.
+baseurl: /opendatatimetosdream
+
+# Authentication
+github_client_id: 65030a5ca912929cfa3b
+gatekeeper_host: https://opendatatimetosdream.herokuapp.com
+
+#Social Links
+facebook-page: https://https://www.facebook.com/timetosdream/
+twitter: https://twitter.com/timetosdream
+
+# Categories
+category_list:
+  - Arte
+  - Storia
+  - Cultura
+  - Inclusione
+  - Finanza
+  - Economia
+  - Educazione
+  - Elezioni
+  - Politica
+  - Ambiente
+  - Meteo
+  - Aria
+  - Acqua
+  - Terra
+  - Cibo
+  - Salute
+  - Servizi Umanitari
+  - Parchi
+  - Svago
+  - Pianificazione / Territorio
+  - Sicurezza Pubblica
+  - Immobili
+  - Trasporti
+  - Autobus
+  - Biciclette
+  - Car Sharing
+  - Senza categoria
+
+# Link for the "fork me on github" banner. Remove this line to suppress banner.
+fork_me_url: https://github.com/timetosdream/opendatatimetosdream
+
+# Nav bar
+navigation:
+  - title: Dati
+    url: /datasets/
+  - title: Cos'è?
+    url: /cosa/
+  - title: Come aggiungo dati?
+    url: /come/
+  - title: Fallo anche tu
+    url: /fallo/
+
+# Collections
+collections:
+  datasets:
+    output: true
+    permalink: /datasets/:path/
+  organizations:
+    output: false
+
+# Collections (cont'd)
+defaults:
+  - scope:
+      path: ""
+      type: datasets
+    values:
+      layout: dataset
+      category: Uncategorized
+      organization: N/A
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Exclude these files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .travis.yml
+  - node_modules
+  - scripts/src
+  - package.json
+  - webpack.config.js
+  - README.md
+  - LICENSE
